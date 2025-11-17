@@ -5,8 +5,9 @@ const formatValue = (
         return value.toUpperCase();
     } else if (typeof value === "boolean") {
         return !value;
+    } else {
+        return value * 10;
     }
-    return value;
 };
 
 console.log(formatValue("hello"));
