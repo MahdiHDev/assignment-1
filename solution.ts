@@ -34,17 +34,34 @@ class Person {
     }
 }
 
-type books = {
+type Book = {
     title: string;
     rating: number;
 };
 
-// problem 4
 const books = [
     { title: "Book A", rating: 4.5 },
     { title: "Book B", rating: 3.2 },
     { title: "Book C", rating: 5.0 },
 ];
 
-const filterByRating = (books: books[]): books[] =>
+const filterByRating = (books: Book[]): Book[] =>
     books.filter((book) => book.rating >= 4);
+
+type User = {
+    id: number;
+    name: string;
+    email: string;
+    isActive: boolean;
+};
+
+const users = [
+    { id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
+    { id: 2, name: "Asha", email: "asha@example.com", isActive: false },
+    { id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
+];
+
+const filterActiveUsers = (users: User[]): User[] =>
+    users.filter((user) => user.isActive);
+
+console.log(filterActiveUsers(users));
