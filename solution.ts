@@ -85,3 +85,34 @@ const myBook: IBook = {
     publishedYear: 1925,
     isAvailable: true,
 };
+
+type Arr = (string | number)[];
+
+const getUniqueValues = (array1: Arr, array2: Arr): Arr => {
+    const temp: Arr = []; // [1, 2, 2, 3, 4]
+    for (let i of array1) {
+        let isFound = false;
+        for (let j of temp) {
+            if (i === j) {
+                isFound = true;
+                break;
+            }
+        }
+        if (!isFound) {
+            temp.push(i);
+        }
+    }
+    for (let i of array2) {
+        let isFound = false;
+        for (let j of temp) {
+            if (i === j) {
+                isFound = true;
+                break;
+            }
+        }
+        if (!isFound) {
+            temp.push(i);
+        }
+    }
+    return temp;
+};
