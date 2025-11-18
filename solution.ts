@@ -10,10 +10,6 @@ const formatValue = (
     }
 };
 
-console.log(formatValue("hello"));
-console.log(formatValue(5));
-console.log(formatValue(true));
-
 const getLength = <T>(value: T): number => {
     if (typeof value === "string") {
         return value.length;
@@ -24,10 +20,6 @@ const getLength = <T>(value: T): number => {
     }
 };
 
-console.log(getLength("typescript"));
-console.log(getLength([10, 20, 30, 40]));
-
-// problem 3
 class Person {
     name: string;
     age: number;
@@ -42,8 +34,17 @@ class Person {
     }
 }
 
-const person1 = new Person("John Doe", 30);
-console.log(person1.getDetails());
+type books = {
+    title: string;
+    rating: number;
+};
 
-const person2 = new Person("Alice", 25);
-console.log(person2.getDetails());
+// problem 4
+const books = [
+    { title: "Book A", rating: 4.5 },
+    { title: "Book B", rating: 3.2 },
+    { title: "Book C", rating: 5.0 },
+];
+
+const filterByRating = (books: books[]): books[] =>
+    books.filter((book) => book.rating >= 4);
