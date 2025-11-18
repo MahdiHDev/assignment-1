@@ -5,12 +5,14 @@ const formatValue = (
         return value.toUpperCase();
     } else if (typeof value === "boolean") {
         return !value;
-    } else {
+    } else if (typeof value === "number") {
         return value * 10;
+    } else {
+        return "invalid type";
     }
 };
 
-const getLength = <T>(value: T): number => {
+const getLength = (value: string | any[]): number => {
     if (typeof value === "string") {
         return value.length;
     } else if (Array.isArray(value)) {
@@ -64,4 +66,22 @@ const users = [
 const filterActiveUsers = (users: User[]): User[] =>
     users.filter((user) => user.isActive);
 
-console.log(filterActiveUsers(users));
+interface IBook {
+    title: string;
+    author: string;
+    publishedYear: number;
+    isAvailable: boolean;
+}
+
+const printBookDetails = (value: IBook): string => {
+    return `Title: ${value.title}, Author: ${value.author}, Published: ${
+        value.publishedYear
+    }, Available: ${value.isAvailable ? "Yes" : "No"}`;
+};
+
+const myBook: IBook = {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    publishedYear: 1925,
+    isAvailable: true,
+};
