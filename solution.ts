@@ -116,3 +116,29 @@ const getUniqueValues = (array1: Arr, array2: Arr): Arr => {
     }
     return temp;
 };
+
+type Product = {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number;
+};
+
+const products = [
+    { name: "Pen", price: 10, quantity: 2 },
+    { name: "Notebook", price: 25, quantity: 3, discount: 10 },
+    { name: "Bag", price: 50, quantity: 1, discount: 20 },
+];
+
+const calculateTotalPrice = (products: Product[]) => {
+    return products
+        .map((product) => {
+            const discount = product.discount
+                ? (product.price * product.discount) / 100
+                : 0;
+            const discountedPrice = product.price - discount;
+
+            return discountedPrice * product.quantity;
+        })
+        .reduce((total, current) => total + current, 0);
+};
